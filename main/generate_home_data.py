@@ -6,23 +6,51 @@ labels = ['device',	'building',	'floor', 'room', 'type', 'power', 'date', 'from_
 devices = ['AC', 'Lights', 'Television', 'Refridgerator', 'Heater', 'Microwave', 'Computer']
 types = ['indoor', 'outdoor']
 date_range = pd.date_range(start='1/1/2018', end='2/1/2018', freq='H')
-buildings = np.random.randint(1, 4, len(date_range) - 1)
-floors = np.random.randint(1, 11, len(date_range) - 1)
-from_range = date_range[:-1]
-to_range = date_range[1:]
+devices = [[i] * int(len(date_range) - 1) for i in devices]
+
+devices_list = []
+no_of_people = []
+time_stayed_mins = []
+buildings = []
+floors = []
+from_range = []
+to_range = []
+
 df = pd.DataFrame(columns=labels)
-no_of_people = np.random.randint(0, 11, len(date_range) - 1)
-time_stayed_mins = np.random.randint(0, 31, len(date_range) - 1)
+
+flatten = lambda l: [item for sublist in l for item in sublist]
+
+for device in devices:
+    no_of_people.append(np.random.randint(0, 11, len(date_range) - 1))
+    time_stayed_mins.append(np.random.randint(0, 31, len(date_range) - 1))
+    buildings.append(np.random.randint(1, 4, len(date_range) - 1))
+    floors.append(np.random.randint(1, 11, len(date_range) - 1))
+    from_range.append(date_range[:-1])
+    to_range.append(date_range[1:])
+    
+for i in devices:
+    devices_list += i
+
+no_of_people = flatten(no_of_people)
+time_stayed_mins = flatten(time_stayed_mins)
+buildings = flatten(buildings)
+floors = flatten(floors)
+from_range = flatten(from_range)
+from_range = [i.time() for i in from_range]
+to_range = flatten(to_range)
+to_range = [i.time() for i in to_range]
+  
+date_range = np.repeat(date_range[:-1], len(devices))
 
 df['building'] = buildings
 df['floor'] = floors
-df['date'] = date_range.date[:-1]
-df['from_time'] = from_range.time
-df['to_time'] = to_range.time
+df['date'] = date_range.date
+df['from_time'] = from_range
+df['to_time'] = to_range
 df['time_stayed_mins'] = time_stayed_mins
 df['no_of_people'] = no_of_people
-df['type'] = [random.choice(types) for i in range(744)]
-df['device'] = [random.choice(devices) for i in range(744)]
+df['type'] = [random.choice(types) for i in range(len(date_range))]
+df['device'] = devices_list
 type_bools = df['type'] == 'outdoor'
 
 rooms = []
@@ -70,7 +98,7 @@ for dev, typ in zip(df['device'], df['type']):
         powers.append(random.choice(comp))    
 
 df['power'] = powers
-df = df.sort_values(by=['building', 'floor', 'device', 'date']).reset_index().drop(columns=['index'])
+df = df.sort_values(by=['building', 'floor', 'room', 'device', 'date', 'from_time']).reset_index().drop(columns=['index'])
 df.to_csv('../data/home_data.csv', index=False)
 
 
