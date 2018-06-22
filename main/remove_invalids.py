@@ -15,4 +15,4 @@ df = pd.read_csv('../data/home_data.csv')
 df.loc[df['no_of_people'] == 0, 'time_stayed_mins'] = 0
 df.loc[df['time_stayed_mins'] == 0, 'no_of_people'] = 0       
 df = df.fillna(000)
-df.to_csv('../data/home_data.csv')
+df.to_csv('../data/home_data.csv', index=False)
