@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Jun 21 16:35:29 2018
-
-@author: Sudhanva
-"""
-
 # Home Appliances Data
 import numpy as np
 import pandas as pd
@@ -12,6 +5,7 @@ import pdb
 import matplotlib.pyplot as plt
 import ast
 
+# Import Dataset
 df = pd.read_csv('../data/home_data.csv')
 
 df_devices = df.groupby(['from_time', 'device', 'type']).mean()['power']
@@ -25,22 +19,32 @@ types_dict = {}
 devices_dict = {}
 from_times_dict = {} 
 
+num = []
+
 for i in types:
-    types_dict[i] = 0
+    types_dict[i] = num.copy()
 
 for j in devices:
-    devices_dict[j] = types_dict
+    devices_dict[j] = types_dict.copy()
 
 for k in from_times:
-    from_times_dict[k] = devices_dict
+    from_times_dict[k] = devices_dict.copy()
     
-dd = from_times_dict
+dd = from_times_dict.copy()
+
+mean_list = []
+mean_dict = {}
 
 i = -1
-
 for time, app in dd.items():
-    for appl, inout in app.items():
-        pdb.set_trace()
-        inout["indoor"] = df_devices[i+1]
-        inout["outdoor"] = df_devices[i+2]
-        i += 1
+#     print(time, app)
+    for appl, typ in app.items():
+#         print(typ)
+#         print(typ['indoor'], typ['outdoor'])
+        typ['indoor'] = df_devices[i + 1].copy()
+        typ['outdoor'] = df_devices[i + 2].copy()
+#         print(df_devices[i + 1], df_devices[i + 2], i)
+        i += 2
+#         print(typ)
+    print(dd[time])
+    mean_list.append(dd[time].copy())
