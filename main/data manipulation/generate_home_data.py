@@ -1,13 +1,17 @@
+# Import necessary libraries
+
 import numpy as np 
 import pandas as pd 
 import random
 
+# Columns of the dataset
 labels = ['device',	'building',	'floor', 'room', 'type', 'power', 'date', 'from_time', 'to_time', 'no_of_people', 'time_stayed_mins']
 devices = ['AC', 'Lights', 'Television', 'Refridgerator', 'Heater', 'Microwave', 'Computer']
 types = ['indoor', 'outdoor']
 date_range = pd.date_range(start='1/1/2018', end='2/1/2018', freq='H')
 devices = [[i] * int(len(date_range) - 1) for i in devices]
 
+# Lists of columns of dataframe
 devices_list = []
 no_of_people = []
 time_stayed_mins = []
@@ -18,6 +22,7 @@ to_range = []
 
 df = pd.DataFrame(columns=labels)
 
+# Flatten lists of lists into list
 flatten = lambda l: [item for sublist in l for item in sublist]
 
 for device in devices:
@@ -42,6 +47,7 @@ to_range = [i.time() for i in to_range]
   
 date_range = np.repeat(date_range[:-1], len(devices))
 
+# Create dataframe
 df['building'] = buildings
 df['floor'] = floors
 df['date'] = date_range.date
@@ -62,6 +68,7 @@ for index, value in enumerate(type_bools):
         
 df['room'] = rooms
 
+# Creating random ranges of appliances and their power consumptions
 ac_indoor = np.arange(1000, 2000)
 ac_outdoor = np.arange(2000, 5000)
 
@@ -74,7 +81,7 @@ heater = np.arange(1500, 3000)
 mw = np.arange(1000, 2000)
 comp = np.arange(300, 500)
 
-
+# Creating power consumption data 
 powers = []
 
 for dev, typ in zip(df['device'], df['type']):
@@ -99,6 +106,8 @@ for dev, typ in zip(df['device'], df['type']):
 
 df['power'] = powers
 df = df.sort_values(by=['building', 'floor', 'room', 'device', 'date', 'from_time']).reset_index().drop(columns=['index'])
+
+# Converting dataframe into CSV
 df.to_csv('../data/home_data.csv', index=False)
 
 
