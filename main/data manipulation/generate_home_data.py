@@ -5,9 +5,9 @@ import pandas as pd
 import random
 
 # Columns of the dataset
-labels = ['device',	'building',	'floor', 'room', 'type', 'power', 'date', 'from_time', 'to_time', 'no_of_people', 'time_stayed_mins']
+labels = ['device',	'building',	'floor', 'room', 'weather_type', 'power', 'date', 'from_time', 'to_time', 'no_of_people', 'time_stayed_mins']
 devices = ['AC', 'Lights', 'Television', 'Refridgerator', 'Heater', 'Microwave', 'Computer']
-types = ['indoor', 'outdoor']
+weather_types = ['low cold', 'cold', 'very cold', 'low hot', 'hot', 'very hot']
 date_range = pd.date_range(start='1/1/2018', end='2/1/2018', freq='H')
 devices = [[i] * int(len(date_range) - 1) for i in devices]
 
@@ -55,9 +55,8 @@ df['from_time'] = from_range
 df['to_time'] = to_range
 df['time_stayed_mins'] = time_stayed_mins
 df['no_of_people'] = no_of_people
-df['type'] = [random.choice(types) for i in range(len(date_range))]
+df['weather_type'] = [random.choice(weather_types) for i in range(len(date_range))]
 df['device'] = devices_list
-type_bools = df['type'] == 'outdoor'
 
 rooms = []
 for index, value in enumerate(type_bools):
@@ -69,12 +68,8 @@ for index, value in enumerate(type_bools):
 df['room'] = rooms
 
 # Creating random ranges of appliances and their power consumptions
-ac_indoor = np.arange(1000, 2000)
-ac_outdoor = np.arange(2000, 5000)
-
-light_indoor = np.arange(1000, 2000)
-light_outdoor = np.arange(2000, 5000)
-
+ac = np.arange(1000, 2000)
+light = np.arange(1000, 2000)
 tv = np.arange(200, 300)
 ref = np.arange(100, 300)
 heater = np.arange(1500, 3000)
@@ -84,15 +79,11 @@ comp = np.arange(300, 500)
 # Creating power consumption data 
 powers = []
 
-for dev, typ in zip(df['device'], df['type']):
-    if dev == 'AC' and typ == 'indoor':
-        powers.append(random.choice(ac_indoor))
-    elif dev == 'AC' and typ == 'outdoor':
-        powers.append(random.choice(ac_outdoor))
-    elif dev == 'Lights' and typ == 'indoor':
-        powers.append(random.choice(light_indoor))
-    elif dev == 'Lights' and typ == 'outdoor':
-        powers.append(random.choice(light_outdoor))
+for dev, typ in zip(df['device'], df['weather_type']):
+    if dev == 'AC':
+        powers.append(random.choice(ac))
+    elif dev == 'Lights':
+        powers.append(random.choice(light))
     elif dev == 'Television':
         powers.append(random.choice(tv))    
     elif dev == 'Refridgerator':
