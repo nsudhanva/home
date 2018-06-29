@@ -59,11 +59,8 @@ df['weather_type'] = [random.choice(weather_types) for i in range(len(date_range
 df['device'] = devices_list
 
 rooms = []
-for index, value in enumerate(type_bools):
-    if value:
-        rooms.append(np.NaN)        
-    else:
-        rooms.append((floors[index] * 100) + random.randint(1, 7))
+for index, value in enumerate(floors):
+    rooms.append((floors[index] * 100) + random.randint(1, 7))
         
 df['room'] = rooms
 
