@@ -94,9 +94,10 @@ for dev, typ in zip(df['device'], df['weather_type']):
 
 df['power'] = powers
 df = df.sort_values(by=['building', 'floor', 'room', 'device', 'date', 'from_time']).reset_index().drop(columns=['index'])
-
+df = df[['device', 'building', 'floor', 'room', 'weather_type', 'date',
+       'from_time', 'to_time', 'no_of_people', 'time_stayed_mins', 'power']]
 # Converting dataframe into CSV
-df.to_csv('../data/home_data.csv', index=False)
+df.to_csv('../../data/home_data.csv', index=False)
 
 
 
