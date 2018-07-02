@@ -46,6 +46,21 @@ to_range = flatten(to_range)
 to_range = [i.time() for i in to_range]
   
 date_range = np.repeat(date_range[:-1], len(devices))
+times = []
+
+for i in from_range:
+    if i >= '04:00:00' and i < '07:00:00':
+        times.append('early morning')
+    elif i >= '07:00:00' and i < '12:00:00':
+        times.append('morning')
+    elif i >= '12:00:00' and i < '16:00:00':
+        times.append('afternoon')
+    elif i > '16:00:00' and i < '19:00:00':
+        times.append('evening')
+    elif i > '19:00:00' and i < '23:00:00':
+        times.append('night')
+    else:
+        times.append('midnight')
 
 # Create dataframe
 df['building'] = buildings
@@ -57,6 +72,7 @@ df['time_stayed_mins'] = time_stayed_mins
 df['no_of_people'] = no_of_people
 df['weather_type'] = [random.choice(weather_types) for i in range(len(date_range))]
 df['device'] = devices_list
+df['time'] = times
 
 rooms = []
 for index, value in enumerate(floors):
