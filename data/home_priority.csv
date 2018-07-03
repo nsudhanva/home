@@ -1,0 +1,109 @@
+device,weather_type,time,priority,order
+AC,low cold,early morning,8,52
+AC,low cold,morning,8,49
+AC,low cold,afternoon,8,48
+AC,low cold,evening,8,50
+AC,low cold,night,8,51
+AC,low cold,midnight,8,53
+AC,cold,early morning,11,70
+AC,cold,morning,11,67
+AC,cold,afternoon,11,66
+AC,cold,evening,11,68
+AC,cold,night,11,69
+AC,cold,midnight,11,71
+AC,very cold,early morning,16,100
+AC,very cold,morning,16,97
+AC,very cold,afternoon,16,96
+AC,very cold,evening,16,98
+AC,very cold,night,16,99
+AC,very cold,midnight,16,101
+AC,low hot,early morning,6,41
+AC,low hot,morning,6,38
+AC,low hot,afternoon,6,37
+AC,low hot,evening,6,39
+AC,low hot,night,6,40
+AC,low hot,midnight,6,42
+AC,hot,early morning,4,29
+AC,hot,morning,4,26
+AC,hot,afternoon,4,25
+AC,hot,evening,4,27
+AC,hot,night,4,28
+AC,hot,midnight,4,30
+AC,very hot,early morning,2,17
+AC,very hot,morning,2,14
+AC,very hot,afternoon,2,13
+AC,very hot,evening,2,15
+AC,very hot,night,2,16
+AC,very hot,midnight,2,18
+Heater,low cold,early morning,7,42
+Heater,low cold,morning,7,43
+Heater,low cold,afternoon,7,44
+Heater,low cold,evening,7,45
+Heater,low cold,night,7,46
+Heater,low cold,midnight,7,47
+Heater,cold,early morning,5,31
+Heater,cold,morning,5,32
+Heater,cold,afternoon,5,33
+Heater,cold,evening,5,34
+Heater,cold,night,5,35
+Heater,cold,midnight,5,36
+Heater,very cold,early morning,3,19
+Heater,very cold,morning,3,20
+Heater,very cold,afternoon,3,21
+Heater,very cold,evening,3,22
+Heater,very cold,night,3,23
+Heater,very cold,midnight,3,24
+Heater,low hot,early morning,9,54
+Heater,low hot,morning,9,55
+Heater,low hot,afternoon,9,56
+Heater,low hot,evening,9,57
+Heater,low hot,night,9,58
+Heater,low hot,midnight,9,59
+Heater,hot,early morning,12,72
+Heater,hot,morning,12,73
+Heater,hot,afternoon,12,74
+Heater,hot,evening,12,75
+Heater,hot,night,12,76
+Heater,hot,midnight,12,77
+Heater,very hot,early morning,15,90
+Heater,very hot,morning,15,91
+Heater,very hot,afternoon,15,92
+Heater,very hot,evening,15,93
+Heater,very hot,night,15,94
+Heater,very hot,midnight,15,95
+Lights,low cold,early morning,10,65
+Lights,low cold,morning,13,83
+Lights,low cold,afternoon,17,107
+Lights,low cold,evening,14,89
+Lights,low cold,night,1,7
+Lights,low cold,midnight,1,8
+Lights,cold,early morning,10,64
+Lights,cold,morning,13,82
+Lights,cold,afternoon,17,106
+Lights,cold,evening,14,88
+Lights,cold,night,1,9
+Lights,cold,midnight,1,10
+Lights,very cold,early morning,10,63
+Lights,very cold,morning,13,81
+Lights,very cold,afternoon,17,105
+Lights,very cold,evening,14,87
+Lights,very cold,night,1,11
+Lights,very cold,midnight,1,12
+Lights,low hot,early morning,10,62
+Lights,low hot,morning,13,80
+Lights,low hot,afternoon,17,104
+Lights,low hot,evening,14,86
+Lights,low hot,night,1,5
+Lights,low hot,midnight,1,6
+Lights,hot,early morning,10,61
+Lights,hot,morning,13,79
+Lights,hot,afternoon,17,103
+Lights,hot,evening,14,85
+Lights,hot,night,1,3
+Lights,hot,midnight,1,4
+Lights,very hot,early morning,10,60
+Lights,very hot,morning,13,78
+Lights,very hot,afternoon,17,102
+Lights,very hot,evening,14,84
+Lights,very hot,night,1,1
+Lights,very hot,midnight,1,2
