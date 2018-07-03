@@ -46,7 +46,7 @@ for device in devices:
     to_range.append(date_range[1:])    
     devices_list += device
 
-for index, value in buildings:
+for index, value in enumerate(buildings):
     rooms.append((buildings[index] * 100) + random.randint(1, 7))
 
 no_of_people = flatten(no_of_people)
@@ -56,7 +56,8 @@ from_range = flatten(from_range)
 from_range = [i.time() for i in from_range]
 to_range = flatten(to_range)
 to_range = [i.time() for i in to_range]
-  
+rooms = flatten(rooms)
+
 date_range = np.repeat(date_range[:-1], len(devices))
 times = []
 
