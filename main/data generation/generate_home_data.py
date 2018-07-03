@@ -1,15 +1,22 @@
 # Import necessary libraries
-
 import numpy as np 
 import pandas as pd 
 import random
 import datetime
 
 # Columns of the dataset
-labels = ['device',	'building', 'room', 'weather_type', 'date', 'from_time', 'to_time', 'no_of_people', 'time_stayed_mins']
+labels = ['device',	'building', 'room', 'weather_type', 'power', 'date', 'from_time', 'to_time', 'no_of_people', 'time_stayed_mins']
+
+# Devices or Home Appliances
 devices = ['AC', 'Lights', 'Television', 'Refridgerator', 'Heater', 'Microwave', 'Computer']
+
+# Weather types and conditions
 weather_types = ['low cold', 'cold', 'very cold', 'low hot', 'hot', 'very hot']
+
+# Date range with frequency of 1 hour from 1/1/18 to 2/1/18
 date_range = pd.date_range(start='1/1/2018', end='2/1/2018', freq='H')
+
+# Date ranges for every devices
 devices = [[i] * int(len(date_range) - 1) for i in devices]
 
 # Lists of columns of dataframe
@@ -19,21 +26,28 @@ time_stayed_mins = []
 buildings = []
 from_range = []
 to_range = []
+rooms = []
+
+buildings_num = 11
+people_num = 16
+max_time = 60
 
 df = pd.DataFrame(columns=labels)
 
 # Flatten lists of lists into list
 flatten = lambda l: [item for sublist in l for item in sublist]
 
+# Generating other datasets
 for device in devices:
-    no_of_people.append(np.random.randint(0, 15, len(date_range) - 1))
-    time_stayed_mins.append(np.random.randint(0, 60, len(date_range) - 1))
-    buildings.append(np.random.randint(1, 11, len(date_range) - 1))
-    from_range.append(date_range[:-1])
-    to_range.append(date_range[1:])
-    
-for i in devices:
-    devices_list += i
+    no_of_people.append(np.random.randint(0, people_num, len(date_range) - 1))
+    time_stayed_mins.append(np.random.randint(0, max_time, len(date_range) - 1))
+    buildings.append(np.random.randint(1, buildings_num, len(date_range) - 1))
+    from_range.append(date_range[:-1])  
+    to_range.append(date_range[1:])    
+    devices_list += device
+
+for index, value in buildings:
+    rooms.append((buildings[index] * 100) + random.randint(1, 7))
 
 no_of_people = flatten(no_of_people)
 time_stayed_mins = flatten(time_stayed_mins)
@@ -69,12 +83,7 @@ df['time_stayed_mins'] = time_stayed_mins
 df['no_of_people'] = no_of_people
 df['weather_type'] = [random.choice(weather_types) for i in range(len(date_range))]
 df['device'] = devices_list
-df['time'] = times
-
-rooms = []
-for index, value in enumerate(buildings):
-    rooms.append((buildings[index] * 100) + random.randint(1, 7))
-        
+df['time'] = times        
 df['room'] = rooms
 
 # Creating random ranges of appliances and their power consumptions
@@ -86,11 +95,44 @@ heater = np.arange(1500, 3000)
 mw = np.arange(1000, 2000)
 comp = np.arange(300, 500)
 
+# Creating power consumption data 
+powers = []
+
+for dev, typ in zip(df['device'], df['weather_type']):
+    if dev == 'AC':
+        powers.append(random.choice(ac))
+    elif dev == 'Lights':
+        powers.append(random.choice(light))
+    elif dev == 'Television':
+        powers.append(random.choice(tv))    
+    elif dev == 'Refridgerator':
+        powers.append(random.choice(ref))    
+    elif dev == 'Heater':
+        powers.append(random.choice(heater))    
+    elif dev == 'Microwave':
+        powers.append(random.choice(mw))    
+    elif dev == 'Computer':
+        powers.append(random.choice(comp))    
+
+df['power'] = powers
 df = df.sort_values(by=['building', 'room', 'device', 'date', 'from_time']).reset_index().drop(columns=['index'])
 df = df[['device', 'building', 'room', 'weather_type', 'date',
-       'from_time', 'to_time', 'time', 'no_of_people', 'time_stayed_mins']]
+       'from_time', 'to_time', 'time', 'no_of_people', 'time_stayed_mins', 'power']]
+
+# Remove invalids
+weather_types = ['low cold', 'cold', 'very cold', 'low hot', 'hot', 'very hot']
+
+df.loc[df['no_of_people'] == 0, 'time_stayed_mins'] = 0
+df.loc[df['time_stayed_mins'] == 0, 'no_of_people'] = 0
+
+for i in range(1, 11):    
+    df.loc[df['building'] == i, 'weather_type'] = random.choice(weather_types)
+
+# Remove invalid data and NaNs
+df = df.fillna(0)
+
 # Converting dataframe into CSV
-df.to_csv('../../data/home_data_test.csv', index=False)
+df.to_csv('../../data/home_data.csv', index=False)
 
 
 
