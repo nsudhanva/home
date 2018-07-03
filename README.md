@@ -27,20 +27,25 @@ home
 └───classification
 │      *.ipynb - Classification ML/DL algorithms
 │      results.ipynb - Final results and graphs
+│
+└───regression
+│      *.ipynb - Regression ML/DL algorithms
 │   
+└───model
+│      regression models
+│
 └───docs
 │      documentation and reports
 │
 └───main
        visualization - data analysis
-       data manipulation - generate data and cleaning
+       data generation - generate data and cleaning
 ```
 
 # Usage
 
-* ```generate_home_data.py``` - Generate data - non label dataset
-* ```remove_invalids.py``` - Remove values with invalid parameters - Final dataset
-* ```results.ipynb``` - Performance of ML algorithms
+* ```generate_home_data.py``` - Generate data - with power consumption
+* ```generate_home_data_test.py``` - Generate unseen data - with no power consumption
 
 # Results
 
