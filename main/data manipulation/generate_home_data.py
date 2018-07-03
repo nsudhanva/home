@@ -3,9 +3,10 @@
 import numpy as np 
 import pandas as pd 
 import random
+import datetime
 
 # Columns of the dataset
-labels = ['device',	'building',	'floor', 'room', 'weather_type', 'power', 'date', 'from_time', 'to_time', 'no_of_people', 'time_stayed_mins']
+labels = ['device',	'building', 'room', 'weather_type', 'power', 'date', 'from_time', 'to_time', 'no_of_people', 'time_stayed_mins']
 devices = ['AC', 'Lights', 'Television', 'Refridgerator', 'Heater', 'Microwave', 'Computer']
 weather_types = ['low cold', 'cold', 'very cold', 'low hot', 'hot', 'very hot']
 date_range = pd.date_range(start='1/1/2018', end='2/1/2018', freq='H')
@@ -16,7 +17,6 @@ devices_list = []
 no_of_people = []
 time_stayed_mins = []
 buildings = []
-floors = []
 from_range = []
 to_range = []
 
@@ -28,8 +28,7 @@ flatten = lambda l: [item for sublist in l for item in sublist]
 for device in devices:
     no_of_people.append(np.random.randint(0, 11, len(date_range) - 1))
     time_stayed_mins.append(np.random.randint(0, 31, len(date_range) - 1))
-    buildings.append(np.random.randint(1, 4, len(date_range) - 1))
-    floors.append(np.random.randint(1, 11, len(date_range) - 1))
+    buildings.append(np.random.randint(1, 101, len(date_range) - 1))
     from_range.append(date_range[:-1])
     to_range.append(date_range[1:])
     
@@ -39,7 +38,6 @@ for i in devices:
 no_of_people = flatten(no_of_people)
 time_stayed_mins = flatten(time_stayed_mins)
 buildings = flatten(buildings)
-floors = flatten(floors)
 from_range = flatten(from_range)
 from_range = [i.time() for i in from_range]
 to_range = flatten(to_range)
@@ -49,22 +47,21 @@ date_range = np.repeat(date_range[:-1], len(devices))
 times = []
 
 for i in from_range:
-    if i >= '04:00:00' and i < '07:00:00':
+    if i >= datetime.datetime.strptime('04:00:00', '%H:%M:%S').time() and i < datetime.datetime.strptime('07:00:00', '%H:%M:%S').time():
         times.append('early morning')
-    elif i >= '07:00:00' and i < '12:00:00':
+    elif i >= datetime.datetime.strptime('07:00:00', '%H:%M:%S').time() and i < datetime.datetime.strptime('12:00:00', '%H:%M:%S').time():
         times.append('morning')
-    elif i >= '12:00:00' and i < '16:00:00':
+    elif i >= datetime.datetime.strptime('12:00:00', '%H:%M:%S').time() and i < datetime.datetime.strptime('16:00:00', '%H:%M:%S').time():
         times.append('afternoon')
-    elif i > '16:00:00' and i < '19:00:00':
+    elif i >= datetime.datetime.strptime('16:00:00', '%H:%M:%S').time() and i < datetime.datetime.strptime('19:00:00', '%H:%M:%S').time():
         times.append('evening')
-    elif i > '19:00:00' and i < '23:00:00':
+    elif i >= datetime.datetime.strptime('19:00:00', '%H:%M:%S').time() and i < datetime.datetime.strptime('23:00:00', '%H:%M:%S').time():
         times.append('night')
     else:
         times.append('midnight')
 
 # Create dataframe
 df['building'] = buildings
-df['floor'] = floors
 df['date'] = date_range.date
 df['from_time'] = from_range
 df['to_time'] = to_range
@@ -75,8 +72,8 @@ df['device'] = devices_list
 df['time'] = times
 
 rooms = []
-for index, value in enumerate(floors):
-    rooms.append((floors[index] * 100) + random.randint(1, 7))
+for index, value in enumerate(buildings):
+    rooms.append((buildings[index] * 100) + random.randint(1, 7))
         
 df['room'] = rooms
 
@@ -109,9 +106,9 @@ for dev, typ in zip(df['device'], df['weather_type']):
         powers.append(random.choice(comp))    
 
 df['power'] = powers
-df = df.sort_values(by=['building', 'floor', 'room', 'device', 'date', 'from_time']).reset_index().drop(columns=['index'])
-df = df[['device', 'building', 'floor', 'room', 'weather_type', 'date',
-       'from_time', 'to_time', 'no_of_people', 'time_stayed_mins', 'power']]
+df = df.sort_values(by=['building', 'room', 'device', 'date', 'from_time']).reset_index().drop(columns=['index'])
+df = df[['device', 'building', 'room', 'weather_type', 'date',
+       'from_time', 'to_time', 'time', 'no_of_people', 'time_stayed_mins', 'power']]
 # Converting dataframe into CSV
 df.to_csv('../../data/home_data.csv', index=False)
 
