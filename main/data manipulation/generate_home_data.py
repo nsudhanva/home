@@ -29,7 +29,7 @@ for device in devices:
     no_of_people.append(np.random.randint(0, 15, len(date_range) - 1))
     time_stayed_mins.append(np.random.randint(0, 60, len(date_range) - 1))
     buildings.append(np.random.randint(1, 11, len(date_range) - 1))
-    from_range.append(date_range[:-1])
+    from_range.append(date_range[:-1])  
     to_range.append(date_range[1:])
     
 for i in devices:
