@@ -6,7 +6,7 @@ import random
 import datetime
 
 # Columns of the dataset
-labels = ['device',	'building', 'room', 'weather_type', 'power', 'date', 'from_time', 'to_time', 'no_of_people', 'time_stayed_mins']
+labels = ['device',	'building', 'room', 'weather_type', 'date', 'from_time', 'to_time', 'no_of_people', 'time_stayed_mins']
 devices = ['AC', 'Lights', 'Television', 'Refridgerator', 'Heater', 'Microwave', 'Computer']
 weather_types = ['low cold', 'cold', 'very cold', 'low hot', 'hot', 'very hot']
 date_range = pd.date_range(start='1/1/2018', end='2/1/2018', freq='H')
@@ -86,31 +86,11 @@ heater = np.arange(1500, 3000)
 mw = np.arange(1000, 2000)
 comp = np.arange(300, 500)
 
-# Creating power consumption data 
-powers = []
-
-for dev, typ in zip(df['device'], df['weather_type']):
-    if dev == 'AC':
-        powers.append(random.choice(ac))
-    elif dev == 'Lights':
-        powers.append(random.choice(light))
-    elif dev == 'Television':
-        powers.append(random.choice(tv))    
-    elif dev == 'Refridgerator':
-        powers.append(random.choice(ref))    
-    elif dev == 'Heater':
-        powers.append(random.choice(heater))    
-    elif dev == 'Microwave':
-        powers.append(random.choice(mw))    
-    elif dev == 'Computer':
-        powers.append(random.choice(comp))    
-
-df['power'] = powers
 df = df.sort_values(by=['building', 'room', 'device', 'date', 'from_time']).reset_index().drop(columns=['index'])
 df = df[['device', 'building', 'room', 'weather_type', 'date',
-       'from_time', 'to_time', 'time', 'no_of_people', 'time_stayed_mins', 'power']]
+       'from_time', 'to_time', 'time', 'no_of_people', 'time_stayed_mins']]
 # Converting dataframe into CSV
-df.to_csv('../../data/home_data.csv', index=False)
+df.to_csv('../../data/home_data_test.csv', index=False)
 
 
 
