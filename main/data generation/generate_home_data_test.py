@@ -5,7 +5,7 @@ import random
 import datetime
 
 # Columns of the dataset
-labels = ['device',	'building', 'room', 'weather_type', 'date', 'from_time', 'to_time', 'no_of_people', 'time_stayed_mins']
+labels = ['device', 'room', 'weather_type', 'date', 'from_time', 'to_time', 'no_of_people', 'time_stayed_mins']
 
 # Devices or Home Appliances
 devices = ['AC', 'Lights', 'Television', 'Refridgerator', 'Heater', 'Microwave', 'Computer']
@@ -23,14 +23,16 @@ devices = [[i] * int(len(date_range) - 1) for i in devices]
 devices_list = []
 no_of_people = []
 time_stayed_mins = []
-buildings = []
+#buildings = []
 from_range = []
 to_range = []
 rooms = []
 
-buildings_num = 11
+#buildings_num = 11
 people_num = 16
 max_time = 60
+room_num_start = 100
+room_num_end = 120
 
 df = pd.DataFrame(columns=labels)
 
@@ -41,17 +43,18 @@ flatten = lambda l: [item for sublist in l for item in sublist]
 for device in devices:
     no_of_people.append(np.random.randint(0, people_num, len(date_range) - 1))
     time_stayed_mins.append(np.random.randint(0, max_time, len(date_range) - 1))
-    buildings.append(np.random.randint(1, buildings_num, len(date_range) - 1))
+#    buildings.append(np.random.randint(1, buildings_num, len(date_range) - 1))
     from_range.append(date_range[:-1])  
     to_range.append(date_range[1:])    
     devices_list += device
+    rooms.append(np.random.randint(room_num_start, room_num_end, len(date_range) - 1))
 
-for index, value in enumerate(buildings):
-    rooms.append((buildings[index] * 100) + random.randint(1, 7))
+#for index, value in enumerate(buildings):
+#    rooms.append((buildings[index] * 100) + random.randint(1, 7))
 
 no_of_people = flatten(no_of_people)
 time_stayed_mins = flatten(time_stayed_mins)
-buildings = flatten(buildings)
+#buildings = flatten(buildings)
 from_range = flatten(from_range)
 from_range = [i.time() for i in from_range]
 to_range = flatten(to_range)
@@ -76,7 +79,7 @@ for i in from_range:
         times.append('midnight')
 
 # Create dataframe
-df['building'] = buildings
+#df['building'] = buildings
 df['date'] = date_range.date
 df['from_time'] = from_range
 df['to_time'] = to_range
@@ -96,8 +99,8 @@ heater = np.arange(1500, 3000)
 mw = np.arange(1000, 2000)
 comp = np.arange(300, 500)
 
-df = df.sort_values(by=['building', 'room', 'device', 'date', 'from_time']).reset_index().drop(columns=['index'])
-df = df[['device', 'building', 'room', 'weather_type', 'date',
+df = df.sort_values(by=['room', 'device', 'date', 'from_time']).reset_index().drop(columns=['index'])
+df = df[['device', 'room', 'weather_type', 'date',
        'from_time', 'to_time', 'time', 'no_of_people', 'time_stayed_mins']]
 
 # Remove invalids
@@ -106,8 +109,8 @@ weather_types = ['low cold', 'cold', 'very cold', 'low hot', 'hot', 'very hot']
 df.loc[df['no_of_people'] == 0, 'time_stayed_mins'] = 0
 df.loc[df['time_stayed_mins'] == 0, 'no_of_people'] = 0
 
-for i in range(1, 11):    
-    df.loc[df['building'] == i, 'weather_type'] = random.choice(weather_types)
+#for i in range(room_num_start, room_num_end + 1):    
+#    df.loc[df['room'] == i, 'weather_type'] = random.choice(weather_types)
 
 # Remove invalid data and NaNs
 df = df.fillna(0)
