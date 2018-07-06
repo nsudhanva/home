@@ -107,3 +107,147 @@ Lights,very hot,afternoon,17,102
 Lights,very hot,evening,14,84
 Lights,very hot,night,1,1
 Lights,very hot,midnight,1,2
+Television,low cold,early morning,20,200
+Television,low cold,morning,20,201
+Television,low cold,afternoon,20,202
+Television,low cold,evening,20,203
+Television,low cold,night,20,204
+Television,low cold,midnight,20,205
+Television,cold,early morning,20,206
+Television,cold,morning,20,207
+Television,cold,afternoon,20,208
+Television,cold,evening,20,209
+Television,cold,night,20,210
+Television,cold,midnight,20,211
+Television,very cold,early morning,20,212
+Television,very cold,morning,20,213
+Television,very cold,afternoon,20,214
+Television,very cold,evening,20,215
+Television,very cold,night,20,216
+Television,very cold,midnight,20,217
+Television,low hot,early morning,20,218
+Television,low hot,morning,20,219
+Television,low hot,afternoon,20,220
+Television,low hot,evening,20,221
+Television,low hot,night,20,222
+Television,low hot,midnight,20,223
+Television,hot,early morning,20,224
+Television,hot,morning,20,225
+Television,hot,afternoon,20,226
+Television,hot,evening,20,227
+Television,hot,night,20,228
+Television,hot,midnight,20,229
+Television,very hot,early morning,20,230
+Television,very hot,morning,20,231
+Television,very hot,afternoon,20,232
+Television,very hot,evening,20,233
+Television,very hot,night,20,234
+Television,very hot,midnight,20,235
+Refridgerator,low cold,early morning,20,236
+Refridgerator,low cold,morning,20,237
+Refridgerator,low cold,afternoon,20,238
+Refridgerator,low cold,evening,20,239
+Refridgerator,low cold,night,20,240
+Refridgerator,low cold,midnight,20,241
+Refridgerator,cold,early morning,20,242
+Refridgerator,cold,morning,20,243
+Refridgerator,cold,afternoon,20,244
+Refridgerator,cold,evening,20,245
+Refridgerator,cold,night,20,246
+Refridgerator,cold,midnight,20,247
+Refridgerator,very cold,early morning,20,248
+Refridgerator,very cold,morning,20,249
+Refridgerator,very cold,afternoon,20,250
+Refridgerator,very cold,evening,20,251
+Refridgerator,very cold,night,20,252
+Refridgerator,very cold,midnight,20,253
+Refridgerator,low hot,early morning,20,254
+Refridgerator,low hot,morning,20,255
+Refridgerator,low hot,afternoon,20,256
+Refridgerator,low hot,evening,20,257
+Refridgerator,low hot,night,20,258
+Refridgerator,low hot,midnight,20,259
+Refridgerator,hot,early morning,20,260
+Refridgerator,hot,morning,20,261
+Refridgerator,hot,afternoon,20,262
+Refridgerator,hot,evening,20,263
+Refridgerator,hot,night,20,264
+Refridgerator,hot,midnight,20,265
+Refridgerator,very hot,early morning,20,266
+Refridgerator,very hot,morning,20,267
+Refridgerator,very hot,afternoon,20,268
+Refridgerator,very hot,evening,20,269
+Refridgerator,very hot,night,20,270
+Refridgerator,very hot,midnight,20,271
+Microwave,low cold,early morning,20,272
+Microwave,low cold,morning,20,273
+Microwave,low cold,afternoon,20,274
+Microwave,low cold,evening,20,275
+Microwave,low cold,night,20,276
+Microwave,low cold,midnight,20,277
+Microwave,cold,early morning,20,278
+Microwave,cold,morning,20,279
+Microwave,cold,afternoon,20,280
+Microwave,cold,evening,20,281
+Microwave,cold,night,20,282
+Microwave,cold,midnight,20,283
+Microwave,very cold,early morning,20,284
+Microwave,very cold,morning,20,285
+Microwave,very cold,afternoon,20,286
+Microwave,very cold,evening,20,287
+Microwave,very cold,night,20,288
+Microwave,very cold,midnight,20,289
+Microwave,low hot,early morning,20,290
+Microwave,low hot,morning,20,291
+Microwave,low hot,afternoon,20,292
+Microwave,low hot,evening,20,293
+Microwave,low hot,night,20,294
+Microwave,low hot,midnight,20,295
+Microwave,hot,early morning,20,296
+Microwave,hot,morning,20,297
+Microwave,hot,afternoon,20,298
+Microwave,hot,evening,20,299
+Microwave,hot,night,20,300
+Microwave,hot,midnight,20,301
+Microwave,very hot,early morning,20,302
+Microwave,very hot,morning,20,303
+Microwave,very hot,afternoon,20,304
+Microwave,very hot,evening,20,305
+Microwave,very hot,night,20,306
+Microwave,very hot,midnight,20,307
+Computer,low cold,early morning,20,308
+Computer,low cold,morning,20,309
+Computer,low cold,afternoon,20,310
+Computer,low cold,evening,20,311
+Computer,low cold,night,20,312
+Computer,low cold,midnight,20,313
+Computer,cold,early morning,20,314
+Computer,cold,morning,20,315
+Computer,cold,afternoon,20,316
+Computer,cold,evening,20,317
+Computer,cold,night,20,318
+Computer,cold,midnight,20,319
+Computer,very cold,early morning,20,320
+Computer,very cold,morning,20,321
+Computer,very cold,afternoon,20,322
+Computer,very cold,evening,20,323
+Computer,very cold,night,20,324
+Computer,very cold,midnight,20,325
+Computer,low hot,early morning,20,326
+Computer,low hot,morning,20,327
+Computer,low hot,afternoon,20,328
+Computer,low hot,evening,20,329
+Computer,low hot,night,20,330
+Computer,low hot,midnight,20,331
+Computer,hot,early morning,20,332
+Computer,hot,morning,20,333
+Computer,hot,afternoon,20,334
+Computer,hot,evening,20,335
+Computer,hot,night,20,336
+Computer,hot,midnight,20,337
+Computer,very hot,early morning,20,338
+Computer,very hot,morning,20,339
+Computer,very hot,afternoon,20,340
+Computer,very hot,evening,20,341
+Computer,very hot,night,20,342
+Computer,very hot,midnight,20,343
