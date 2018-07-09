@@ -125,7 +125,7 @@ df.loc[df['time_stayed_mins'] == 0, 'no_of_people'] = 0
 df = df.fillna(0)
 
 # Converting dataframe into CSV
-df.to_csv('../../data/home_data.csv', index=False)
+df.to_csv('../../data/trial1/home_data.csv', index=False)
 
 
 
