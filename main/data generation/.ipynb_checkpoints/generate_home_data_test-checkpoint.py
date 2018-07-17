@@ -5,7 +5,7 @@ import random
 import datetime
 
 # Columns of the dataset
-labels = ['device', 'room', 'weather_type', 'power', 'date', 'from_time', 'to_time', 'no_of_people', 'time_stayed_mins']
+labels = ['device', 'room', 'weather_type', 'date', 'from_time', 'to_time', 'no_of_people', 'time_stayed_mins']
 
 # Devices or Home Appliances
 devices = ['AC', 'Lights', 'Television', 'Refridgerator', 'Heater', 'Microwave', 'Computer']
@@ -52,7 +52,7 @@ from_range = flatten(from_range)
 from_range = [i.time() for i in from_range]
 to_range = flatten(to_range)
 to_range = [i.time() for i in to_range]
-rooms = flatten(rooms)
+rooms = flatten(rooms)  
 
 date_range = np.repeat(date_range[:-1], len(devices))
 times = []
@@ -91,29 +91,9 @@ heater = np.arange(1500, 3000)
 mw = np.arange(1000, 2000)
 comp = np.arange(300, 500)
 
-# Creating power consumption data 
-powers = []
-
-for dev, typ in zip(df['device'], df['weather_type']):
-    if dev == 'AC':
-        powers.append(random.choice(ac))
-    elif dev == 'Lights':
-        powers.append(random.choice(light))
-    elif dev == 'Television':
-        powers.append(random.choice(tv))    
-    elif dev == 'Refridgerator':
-        powers.append(random.choice(ref))    
-    elif dev == 'Heater':
-        powers.append(random.choice(heater))    
-    elif dev == 'Microwave':
-        powers.append(random.choice(mw))    
-    elif dev == 'Computer':
-        powers.append(random.choice(comp))    
-
-df['power'] = powers
 df = df.sort_values(by=['room', 'device', 'date', 'from_time']).reset_index().drop(columns=['index'])
 df = df[['device', 'room', 'weather_type', 'date',
-       'from_time', 'to_time', 'time', 'no_of_people', 'time_stayed_mins', 'power']]
+       'from_time', 'to_time', 'time', 'no_of_people', 'time_stayed_mins']]
 
 # Remove invalids
 weather_types = ['low cold', 'cold', 'very cold', 'low hot', 'hot', 'very hot']
@@ -123,8 +103,9 @@ df.loc[df['time_stayed_mins'] == 0, 'no_of_people'] = 0
 
 # Remove invalid data and NaNs
 df = df.fillna(0)
+
 # Converting dataframe into CSV
-df.to_csv('../../data/trial_4/home_data.csv', index=False)
+df.to_csv('../../data/trial_4/home_data_test.csv', index=False)
 
 
 
