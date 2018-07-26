@@ -1,0 +1,107 @@
+\section*{Overview}
+
+This Machine Learning model is helpful in aiding home automation and home appliaances when there is limited supply of power. Typical home appliances are considered and power consumption of these devices are noted down based on properties like type of device, time (hourly basis), power consumption, number of people and time they have used the appliances in an hour.
+
+\section*{Dependencies}
+
+
+\begin{DoxyEnumerate}
+\item Python 3.\+x
+\item Numpy, Scipy, Pandas, Matplotlib
+\item Tensor\+Flow 1.\+x+, Keras 2.\+x+
+\item N\+V\+I\+D\+IA C\+U\+DA 9.\+x, cu\+D\+NN 7.\+x (Only if using Tensorflow-\/\+G\+PU)
+\item Sci-\/kit learn
+\end{DoxyEnumerate}
+
+\section*{Important Files and Folders}
+
+
+\begin{DoxyCode}
+home
+│   README.md   
+│
+└───data
+│      sample - contains sample dataset
+│      trial\_x - all types of different datasets
+│
+└───regression
+│      *.ipynb - Regression ML/DL algorithms
+│   
+└───model
+│      regression models saved
+│
+└───docs
+│      documentation and reports
+│
+└───main
+       visualization - data analysis
+       data generation - generate data and cleaning
+       experiment - results and custom algorithms
+\end{DoxyCode}
+
+
+\section*{Usage}
+
+
+\begin{DoxyEnumerate}
+\item {\ttfamily main/data generation/generate\+\_\+home\+\_\+data.\+py} -\/ generates {\ttfamily home\+\_\+data.\+csv}
+\begin{DoxyItemize}
+\item Generates dataset with all columns
+\item This dataset will be used to build machine learning model
+\end{DoxyItemize}
+\item {\ttfamily main/data generation/generate\+\_\+home\+\_\+data\+\_\+test.\+py} -\/ generates {\ttfamily home\+\_\+data\+\_\+test.\+csv}
+\begin{DoxyItemize}
+\item Generates dataset with all columns
+\item This dataset will be used to predict power values
+\end{DoxyItemize}
+\item {\ttfamily main/visualization/total\+\_\+power\+\_\+consumption.\+ipynb} -\/ creates {\ttfamily date\+\_\+time\+\_\+group.\+csv}
+\begin{DoxyItemize}
+\item This is the final output which will be used to visualise and compare machine learning algorithms
+\end{DoxyItemize}
+\item {\ttfamily main/visualization/total\+\_\+power\+\_\+consumption\+\_\+final.\+ipynb} -\/ creates {\ttfamily final\+\_\+output\+\_\+group.\+csv}
+\begin{DoxyItemize}
+\item This is the final output which will be used to visualise and compare machine learning algorithms
+\end{DoxyItemize}
+\item {\ttfamily regression/$<$$\ast$$>$.ipynb}
+\begin{DoxyItemize}
+\item Machine learning algorithms used on {\ttfamily home\+\_\+data.\+csv} to build models in {\ttfamily /model/}
+\end{DoxyItemize}
+\item {\ttfamily predict/$<$$\ast$$>$.ipynb}
+\begin{DoxyItemize}
+\item Machine learning algorithms used on {\ttfamily home\+\_\+data\+\_\+test.\+csv} to predict and generate new datasets
+\item {\ttfamily home\+\_\+data\+\_\+predict\+\_\+x} are dataset generated with prediction values
+\end{DoxyItemize}
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item {\ttfamily main/experiment/trail\+\_\+x/trail\+\_\+x\+\_\+x.\+py}
+\begin{DoxyItemize}
+\item Custom algorithm to give messages to users -\/ generates {\ttfamily final\+\_\+output\+\_\+x.\+csv} in {\ttfamily data/trail\+\_\+x}
+\end{DoxyItemize}
+\item {\ttfamily main/experiment/trail\+\_\+x/results\+\_\+x\+\_\+x.\+py}
+\begin{DoxyItemize}
+\item Visualising all algorithms and performances
+\item Graphs plotted to identify power consumption before machine learning and after using machine learning and custom algorithm
+\end{DoxyItemize}
+\end{DoxyEnumerate}
+
+\section*{Results}
+
+Available in {\ttfamily main/experiment/trail\+\_\+x/results\+\_\+x\+\_\+x} where \textquotesingle{}x\textquotesingle{} can be either sequence or a machine learning algorithm
+
+\section*{Credits}
+
+\href{https://in.linkedin.com/in/vinod-agrawal-8020488}{\tt Vinod Agrawal}
+
+C\+TO, Faststream Technologies
+
+\section*{License}
+
+Copyright(c) 2018, \href{https://www.faststreamtech.com}{\tt Faststream Technologies}
+
+Authors\+:
+
+
+\begin{DoxyItemize}
+\item \href{https://www.sudhanva.in}{\tt Sudhanva Narayana}
+\item \href{https://www.shreyas.im}{\tt Shreyas S} 
+\end{DoxyItemize}
