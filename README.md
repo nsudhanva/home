@@ -21,18 +21,13 @@ home
 │
 └───data
 │      sample - contains sample dataset
-│      home_data.csv - data without labels
-|      home_final.csv - final data with labels
-│   
-└───classification
-│      *.ipynb - Classification ML/DL algorithms
-│      results.ipynb - Final results and graphs
+│      trial_x - all types of different datasets
 │
 └───regression
 │      *.ipynb - Regression ML/DL algorithms
 │   
 └───model
-│      regression models
+│      regression models saved
 │
 └───docs
 │      documentation and reports
@@ -40,12 +35,38 @@ home
 └───main
        visualization - data analysis
        data generation - generate data and cleaning
+       experiment - results and custom algorithms
 ```
 
 # Usage
 
-* ```generate_home_data.py``` - Generate data - with power consumption
-* ```generate_home_data_test.py``` - Generate unseen data - with no power consumption
+1.	```main/data generation/generate_home_data.py``` - generates ```home_data.csv```
+    * Generates dataset with all columns
+    * This dataset will be used to build machine learning model
+
+2.	```main/data generation/generate_home_data_test.py``` - generates ```home_data_test.csv```
+    * Generates dataset with all columns
+    * This dataset will be used to predict power values
+
+3.	```main/visualization/total_power_consumption.ipynb``` - creates ```date_time_group.csv```
+    * This is the final output which will be used to visualise and compare machine learning algorithms
+
+4.	```main/visualization/total_power_consumption_final.ipynb``` - creates ```final_output_group.csv```
+    * This is the final output which will be used to visualise and compare machine learning algorithms
+
+5.	```regression/<*>.ipynb```
+    * Machine learning algorithms used on ```home_data.csv``` to build models in ```/model/```
+
+6.	```predict/<*>.ipynb```
+    * Machine learning algorithms used on ```home_data_test.csv``` to predict and generate new datasets
+    * ```home_data_predict_x``` are dataset generated with prediction values
+
+5.	```main/experiment/trail_x/trail_x_x.py```
+    * Custom algorithm to give messages to users - generates ```final_output_x.csv``` in ```data/trail_x```
+
+6.	```main/experiment/trail_x/results_x_x.py```
+    * Visualising all algorithms and performances
+    * Graphs plotted to identify power consumption before machine learning and after using machine learning and custom algorithm
 
 # Results
 
