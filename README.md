@@ -70,16 +70,7 @@ home
 
 # Results
 
-| No |  Algorithms	                    | Accuracy (%)  |
-| ---|:--------------------------------:| -------------:|
-| 1	 |  K Nearest Neighbours	        | 56%           |
-| 2	 |  Decision Tree Classification	| 93.5%         |
-| 3	 |  Kernel Support Vector Machines	| 62%           |
-| 4	 |  Logistic Regression	            | 66.66%        |
-| 5	 |  Artifical Neural Networks       | 74%           |
-| 6	 |  Random Forest Classification	| 91.1%         |
-| 7	 |  Support Vector Machines	        | 64.9%         |
-
+Available in ```main/experiment/trail_x/results_x_x``` where 'x' can be either sequence or a machine learning algorithm
 
 # Credits
 
